@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('users.index', ['users' => $users]);
+        return view('users.index', compact('users'));
     }
 
 
@@ -31,7 +31,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('users.create');
+    }
+
+    public function store(User $user)
+    {
+        dd($user);
     }
 
 
@@ -42,6 +47,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+
         return view('users.edit', compact('user'));
     }
 
@@ -52,8 +58,11 @@ class UserController extends Controller
      */
     public function update(User $user, Request $request)
     {
+        
         $user->update($request->all());
-        return redirect('users.index');
+
+        $users = User::all();
+        return view('users.index', compact('users', 'user'));
     }
 
     /**
@@ -63,7 +72,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+
         $user->delete();
-        return redirect('users.index');
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 }
