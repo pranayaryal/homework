@@ -12,6 +12,7 @@
                             <div class="row">
                                 <div class="col-md-2">
                                     <p>{{$user->name}}</p>
+
                                 </div>
                                 <div class="col-md-1">
                                     <a class="btn btn-primary" href="/users/{{$user->id}}/edit" role="button">Edit</a>

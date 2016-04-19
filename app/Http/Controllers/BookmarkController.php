@@ -7,6 +7,7 @@ use App\Category;
 use App\Photo;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use SebastianBergmann\Comparator\Book;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -20,6 +21,7 @@ class BookmarkController extends Controller
      */
     public function index()
     {
+
         return $this->showBookmarks();
     }
 
@@ -31,6 +33,7 @@ class BookmarkController extends Controller
     public function create()
     {
         $categories = Category::all();
+
         return view('bookmarks.create', compact('categories'));
     }
 

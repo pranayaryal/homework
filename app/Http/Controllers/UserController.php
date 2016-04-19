@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
+use App\UserGroups;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
 
     /**
-     * Show all users.
+     * Show all users with the group
      *
      * @return Response
      */
@@ -25,7 +28,7 @@ class UserController extends Controller
 
 
     /**
-     * Create new users using the register form.
+     * show the form to create new users
      *
      * @return Response
      */
@@ -34,10 +37,15 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store(User $user)
-    {
-        dd($user);
-    }
+//    /**
+//     * show the form to create new users
+//     *
+//     * @return Response
+//     */
+//    public function store(User $user)
+//    {
+//        dd($user);
+//    }
 
 
     /**
@@ -76,5 +84,47 @@ class UserController extends Controller
         $user->delete();
         $users = User::all();
         return view('users.index', compact('users'));
+    }
+
+    public function addGroupForm()
+    {
+        $groups = Group::all();
+        return view('users.addgroup', compact('groups'));
+    }
+
+    /**
+     * stores the user group
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function storeUserGroup(Request $request)
+    {
+
+
+//        $group_id = Group::find($request['group'])
+//                    ->firstOrFail()
+//                    ->id;
+//
+//        dd($group_id);
+
+
+        $user_id = UserGroups::where('user_id', Auth::user()->id)->first();
+
+
+        if (!isset($user_id))
+        {
+            UserGroups::create(['group_id' => $request['group'],
+                                'user_id' => Auth::user()->id]);
+            
+            return redirect('/')->with('success', 'You have a group assigned');
+        }
+
+
+        return redirect('/')->with('flash_message','You already have a group assigned');
+
+
+        
+        
     }
 }

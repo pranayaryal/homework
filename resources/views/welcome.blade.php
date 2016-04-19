@@ -8,6 +8,16 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
+                    @if(session('flash_message'))
+
+                        <div class="alert alert-warning">
+                            {{ session('flash_message') }}
+                        </div>
+                    @elseif(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
 
                 </div>
             </div>

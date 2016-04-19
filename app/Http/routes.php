@@ -53,3 +53,9 @@ Route::post('{bookmarks}/photos', 'PhotosController@store');
 
 Route::post('category/create', 'CategoryController@create');
 Route::post('category', 'CategoryController@store');
+
+
+//Auth::user() selects a group
+Route::get('/group/add', 'UserController@addGroupForm');
+Route::post('/group/add', 'UserController@storeUserGroup');
+

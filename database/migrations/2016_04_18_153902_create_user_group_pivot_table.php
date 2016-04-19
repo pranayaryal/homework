@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookmarkTable extends Migration
+class CreateUserGroupPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,29 +12,27 @@ class CreateBookmarkTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('user_groups', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
-
-            $table->integer('category_id')->unsigned();
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('category_id')
+            $table->integer('group_id')->unsigned();
+
+            $table->foreign('group_id')
                 ->references('id')
-                ->on('categories')
+                ->on('groups')
                 ->onDelete('cascade');
-
-
-
-            $table->string('name');
-            $table->string('url');
-            $table->text('description');
-            $table->string('image_url');
+            
             $table->timestamps();
+
+
+
+
+
         });
     }
 
@@ -45,7 +43,6 @@ class CreateBookmarkTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bookmarks');
-
+        Schema::drop('user_groups');
     }
 }

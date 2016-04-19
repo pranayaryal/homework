@@ -12,7 +12,7 @@ $(document).ready(function(){
 
     $('#groupselect').change(function() {
         var x = $(this).val();
-        $('#groupinput').val(x);
+        $('#group_id_input').val(x);
     });
     
     $('#categoryselect').change(function() {

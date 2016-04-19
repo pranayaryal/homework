@@ -58,19 +58,7 @@
 </div>
 
 
-{{--<div class="form-group">--}}
-    {{--<label for="" class="col-md-4 control-label">Group</label>--}}
-    {{--<div class="col-md-6">--}}
-        {{--<select name="" id="groupselect" class="form-control">--}}
-            {{--@foreach($groups as $group)--}}
-                {{--<option value="{{$group->name}}">{{$group->name}}</option>--}}
-            {{--@endforeach--}}
-        {{--</select>--}}
 
-        {{--<input type="hidden" class="form-control" id="groupinput" name="group" value="">--}}
-
-    {{--</div>--}}
-{{--</div>--}}
 
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">

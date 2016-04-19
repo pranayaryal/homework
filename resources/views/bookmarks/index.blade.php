@@ -5,10 +5,12 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Bookmarks</div>
+                    <div class="panel-heading">There are {{count($bookmarks)}} bookmarks</div>
 
                     <div class="panel-body">
-                        <p>There are {{count($bookmarks)}} bookmarks</p>
+                        @if(count($bookmarks)==0)
+                            <a href="/bookmarks/create">Create a Bookmark</a>
+                        @endif
                         @foreach($bookmarks as $bookmark)
                             <div class="row">
                                 <div class="col-md-2">
