@@ -24,9 +24,9 @@ class ExampleTest extends TestCase
 //            ->see('Login');
 
         $this->visit('/login')
-            ->type('drpranayaryal@gmail.com', 'email')
-            ->type('08051978', 'password')
+            ->type('email@email.com', 'email')
+            ->type('xxxxxx', 'password')
             ->click('Login')
-            ->see('Users');
+            ->see('Users', 'li');
     }
 }

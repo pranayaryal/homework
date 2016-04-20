@@ -50,7 +50,7 @@
                 @if (Auth::user())
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('/home') }}">Home</a></li>
-                        <li><a href="{{ url('/users') }}">Users</a></li>
+                        <li><a href="{{ url('/users') }}" id="users">Users</a></li>
                         <li><a href="{{ url('/groups') }}">User Groups</a></li>
                         <li><a href="{{ url('/bookmarks') }}">Bookmarks</a></li>
                         <li><a href="{{ url('/categories') }}">Categories</a></li>
