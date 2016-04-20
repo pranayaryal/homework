@@ -37,46 +37,50 @@ class BookmarkController extends Controller
         return view('bookmarks.create', compact('categories'));
     }
 
+    /**
+     * Show the clicked bookmark with its photo and details.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function show(Bookmark $bookmark)
     {
 
         $photo = Photo::where('bookmark_id', $bookmark->id)->first();
-//        $path = $photo->thumbnail_path;
+
         return view('bookmarks.show', compact('bookmark', 'photo'));
     }
+    
 
     /**
-     * Store a newly created bookmark in storage.
-     *
+     * Store the current user's newly created bookmark
+     * 
      * @param  \Illuminate\Http\Request  $request
+     * 
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-//        $bookmark = new Bookmark();
-    //        $bookmark->create($request->all());
-        $bookmarks = Auth::user()->bookmarks()->create($request->all());
+        $this->checkCategoryId($request);
 
 
+        Auth::user()->bookmarks()->create($request->all());
 
-
-
-
-        
         return $this->showBookmarks();
     }
 
     
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the bookmark.
      *
      * @param  App\Bookmark
      * @return \Illuminate\Http\Response
      */
     public function edit(Bookmark $bookmark)
     {
-        return view('bookmarks.edit', compact('bookmark'));
+        $categories = Category::all();
+        
+        return view('bookmarks.edit', compact('bookmark', 'categories'));
     }
 
     /**
@@ -88,15 +92,19 @@ class BookmarkController extends Controller
      */
     public function update(Request $request, Bookmark $bookmark)
     {
+        $this->checkCategoryId($request);
+
         $bookmark->update($request->all());
 
-        return $this->showBookmarks();
+        return redirect('bookmarks');
     }
+    
 
     /**
-     * Remove the specified resource from storage.
+     * Delete the specified bookmark.
      *
      * @param  App\Bookmark
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Bookmark $bookmark)
@@ -106,13 +114,40 @@ class BookmarkController extends Controller
         return $this->showBookmarks();
     }
 
+    
     /**
+     * Show all of the current user's bookmarks
+     *
      * @return mixed
      */
     protected function showBookmarks()
     {
-        $bookmarks = Bookmark::all();
+
+        $bookmarks = Auth::user()->bookmarks;
 
         return view('bookmarks.index', compact('bookmarks'));
+    }
+    
+
+    /**
+     * Checks whether the category_id in the request is set. 
+     * If it isn't it sets it to the first listed category.
+     * 
+     * @param Request $request
+     * 
+     * @return Request
+     */
+    protected function checkCategoryId(Request $request)
+    {
+        //this happens when there is only one category created.
+        if (empty($request['category_id']))
+        {
+            //set the category_id to that of the first category
+            $request['category_id'] = Category::all()[0]->id;
+
+            return $request;
+        }
+
+        return $request;
     }
 }

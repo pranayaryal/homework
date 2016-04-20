@@ -10,6 +10,7 @@
                         <form class="form-horizontal" role="form" method="POST" action="/group/add">
                             {!! csrf_field() !!}
 
+
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label">Group</label>
                                 <div class="col-md-6">

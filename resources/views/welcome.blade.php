@@ -14,7 +14,8 @@
                     @if(session('flash_message'))
 
                         <div class="alert alert-warning">
-                            {{ session('flash_message') }}
+                            {{ session('flash_message')}}
+
                         </div>
                     @elseif(session('success'))
                         <div class="alert alert-success">

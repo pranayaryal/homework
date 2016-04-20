@@ -29,6 +29,8 @@
 
 
                 </div>
+
+                {{--drag and drop a bookmark photo--}}
                 @if(!$photo)
                     <form id="addPhotoForm" action="/{{$bookmark->id}}/photos" method="POST" class="dropzone">
                         {{csrf_field()}}

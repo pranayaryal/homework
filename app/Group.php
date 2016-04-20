@@ -16,6 +16,11 @@ class Group extends Model
         'name'
     ];
 
+    /**
+     * A group has many users
+     *
+     * @return Model App\User
+     */
     public function users()
     {
         return $this->hasMany(User::class);

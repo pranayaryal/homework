@@ -13,6 +13,14 @@ use SebastianBergmann\Comparator\Book;
 class PhotosController extends Controller
 {
 
+
+    /**
+     * Saves a photo to a bookmark
+     * 
+     * @param Bookmark $bookmark
+     * 
+     * @param AddPhotoRequest $request
+     */
     public function store(Bookmark $bookmark, AddPhotoRequest $request)
     {
         

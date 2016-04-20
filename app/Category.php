@@ -14,6 +14,12 @@ class Category extends Model
      */
     protected $fillable = ['name', 'description'];
 
+
+    /**
+     * A Category can have many bookmarks
+     * 
+     * @return Model App\Bookmark
+     */
     public function bookmarks()
     {
         return $this->hasMany(Bookmark::class);

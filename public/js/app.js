@@ -15,7 +15,7 @@ $(document).ready(function(){
         $('#group_id_input').val(x);
     });
     
-    $('#categoryselect').change(function() {
+    $('#categoryselect').onclick(function() {
         var x = $(this).val();
         $('#categoryinput').val(x);
     });

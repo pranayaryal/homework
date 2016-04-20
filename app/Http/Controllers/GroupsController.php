@@ -10,16 +10,36 @@ use App\Http\Requests;
 class GroupsController extends Controller
 {
 
+
+    /**
+     * Show all groups
+     * 
+     * @return mixed
+     */
     public function index()
     {
         return $this->showGroups();
     }
 
+
+    /**
+     * Show the form to create a category
+     * 
+     * @return mixed
+     */
     public function create()
     {
         return view('groups.create');
     }
 
+
+    /**
+     * Store the newly created group
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $group = new Group();
@@ -28,11 +48,29 @@ class GroupsController extends Controller
         return $this->showGroups();
     }
 
+
+    /**
+     * Edit a given group
+     * 
+     * @param Group $group
+     * 
+     * @return mixed
+     */
     public function edit(Group $group)
     {
         return view('groups.edit', compact('group'));
     }
 
+
+    /**
+     * Update a given group
+     * 
+     * @param Group $group
+     * 
+     * @param Request $request
+     * 
+     * @return mixed
+     */
     public function update(Group $group, Request $request)
     {
         $group->update($request->all());
@@ -40,6 +78,15 @@ class GroupsController extends Controller
         return $this->showGroups();
     }
 
+
+    /**
+     * Delete a given group
+     * 
+     * @param Group $group
+     * 
+     * @return mixed
+     *
+     */
     public function destroy(Group $group)
     {
         $group->delete();
@@ -49,6 +96,7 @@ class GroupsController extends Controller
 
     /**
      * list all the groups
+     * 
      * @return mixed
      */
     public function showGroups()

@@ -41,7 +41,7 @@ class Photo extends Model
     }
 
     /**
-     * A Photo belongs to a flyer
+     * A Photo belongs to a bookmark
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function bookmark()

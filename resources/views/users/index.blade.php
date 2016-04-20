@@ -11,7 +11,8 @@
                         @foreach($users as $user)
                             <div class="row">
                                 <div class="col-md-2">
-                                    <p>{{$user->name}}</p>
+                                    <p>Name: {{$user->name}}</p>
+                                    <p>Group: {{$user->getGroupName()}}</p>
 
                                 </div>
                                 <div class="col-md-1">
@@ -27,6 +28,7 @@
 
                                     </form>
                                 </div>
+
                             </div>
 
 

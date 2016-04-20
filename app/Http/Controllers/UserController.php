@@ -22,6 +22,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        
+        $group_name = Auth::user()->getGroupName();
 
         return view('users.index', compact('users'));
     }
@@ -36,16 +38,7 @@ class UserController extends Controller
     {
         return view('users.create');
     }
-
-//    /**
-//     * show the form to create new users
-//     *
-//     * @return Response
-//     */
-//    public function store(User $user)
-//    {
-//        dd($user);
-//    }
+    
 
 
     /**
@@ -86,6 +79,12 @@ class UserController extends Controller
         return view('users.index', compact('users'));
     }
 
+
+    /**
+     * Shows the form to add a group
+     * 
+     * @return mixed
+     */
     public function addGroupForm()
     {
         $groups = Group::all();
@@ -93,38 +92,33 @@ class UserController extends Controller
     }
 
     /**
-     * stores the user group
+     * Stores the newly assigned group
      *
      * @param Request $request
+     * 
      * @return Response
      */
     public function storeUserGroup(Request $request)
     {
+       
+        $group_name = Auth::user()->getGroupNameFromId($request['group']);
 
-
-//        $group_id = Group::find($request['group'])
-//                    ->firstOrFail()
-//                    ->id;
-//
-//        dd($group_id);
-
-
-        $user_id = UserGroups::where('user_id', Auth::user()->id)->first();
-
-
-        if (!isset($user_id))
+        if (Auth::user()->hasGroupAssigned())
         {
-            UserGroups::create(['group_id' => $request['group'],
-                                'user_id' => Auth::user()->id]);
-            
-            return redirect('/')->with('success', 'You have a group assigned');
+
+            return redirect('/')->with('flash_message','You already have a group assigned which is: ' . $group_name);
         }
 
+        UserGroups::create(['group_id' => $request['group'],
+                            'user_id' => Auth::user()->id]);
 
-        return redirect('/')->with('flash_message','You already have a group assigned');
+        return redirect('/')->with('success', 'You group is: ' . $group_name);
+
+
 
 
         
-        
+
+
     }
 }
