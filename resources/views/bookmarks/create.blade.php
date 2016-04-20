@@ -10,9 +10,9 @@
 
                         <div class="panel-body">
                             @if(count($categories)==0)
-                                <div class="col-md-3">
-                                    <p>Oops no categories</p>
-                                    <a href="/categories/create">Create One</a>
+                                <div class="col-md-6">
+                                    <p>Oops! before you create a bookmark you must have a category</p>
+                                    <a href="/categories/create">Create One Here</a>
                                 </div>
 
                             @else

@@ -47,17 +47,18 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a href="{{ url('/users') }}">Users</a></li>
-                    <li><a href="{{ url('/groups') }}">User Groups</a></li>
-                    <li><a href="{{ url('/bookmarks') }}">Bookmarks</a></li>
-                    <li><a href="{{ url('/categories') }}">Categories</a></li>
-                    <li><a href="{{ url('/logout') }}">Add User</a></li>
-                    <li><a href="{{ url('/groups/create') }}">Create Group</a></li>
-                    <li><a href="{{ url('/categories/create') }}">Create Category</a></li>
-                    <li><a href="{{ url('/bookmarks/create') }}">Create Bookmark</a></li>
-                </ul>
+                @if (Auth::user())
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/home') }}">Home</a></li>
+                        <li><a href="{{ url('/users') }}">Users</a></li>
+                        <li><a href="{{ url('/groups') }}">User Groups</a></li>
+                        <li><a href="{{ url('/bookmarks') }}">Bookmarks</a></li>
+                        <li><a href="{{ url('/categories') }}">Categories</a></li>
+                        <li><a href="{{ url('/groups/create') }}">Create Group</a></li>
+                        <li><a href="{{ url('/categories/create') }}">Create Category</a></li>
+                        <li><a href="{{ url('/bookmarks/create') }}">Create Bookmark</a></li>
+                    </ul>
+                @endif
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

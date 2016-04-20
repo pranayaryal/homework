@@ -12,7 +12,7 @@ class Bookmark extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'url', 'description', 'category'];
+    protected $fillable = ['name', 'url', 'description', 'category_id'];
 
     public function user()
     {

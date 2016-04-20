@@ -2,7 +2,7 @@
     <label class="col-md-4 control-label">Category Name</label>
 
     <div class="col-md-6">
-        <input type="text" class="form-control" name="name" value="{{isset($category->name)? $category->name:""}}">
+        <input type="text" class="form-control" name="name" value="{{isset($category->name)? $category->name:""}}" required>
 
     </div>
 </div>
@@ -11,7 +11,7 @@
     <label class="col-md-4 control-label">Category Description</label>
 
     <div class="col-md-6">
-        <input type="text" class="form-control" name="description" value="{{isset($category->description)? $category->description:""}}">
+        <input type="text" class="form-control" name="description" value="{{isset($category->description)? $category->description:""}}" required>
 
     </div>
 </div>

@@ -3,7 +3,7 @@
     <label class="col-md-4 control-label">Bookmark Name</label>
 
     <div class="col-md-6">
-        <input type="text" class="form-control" name="bookmark">
+        <input type="text" class="form-control" name="name">
 
     </div>
 </div>
@@ -28,11 +28,11 @@
         <div class="col-md-6">
             <select name="" id="categoryselect" class="form-control">
                 @foreach($categories as $category)
-                    <option value="{{$category->name}}">{{$category->name}}</option>
+                    <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
             </select>
 
-    <input type="hidden" class="form-control" id="categoryinput" name="group" value="">
+    <input type="hidden" class="form-control" id="categoryinput" name="category_id" value="">
 
     </div>
 </div>

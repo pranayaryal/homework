@@ -13,7 +13,20 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Laravel 5');
+//        $this->visit('/register')
+//             ->type('pranay', 'name')
+//             ->type('drpranayaryal@gmail.com', 'email')
+//             ->type('08051978', 'password')
+//             ->type('08051978', 'password_confirmation')
+//            ->click('Register')
+//            ->see('Logout')
+//            ->click('Logout')
+//            ->see('Login');
+
+        $this->visit('/login')
+            ->type('drpranayaryal@gmail.com', 'email')
+            ->type('08051978', 'password')
+            ->click('Login')
+            ->see('Users');
     }
 }

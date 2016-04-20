@@ -33,7 +33,7 @@ class BookmarkController extends Controller
     public function create()
     {
         $categories = Category::all();
-
+        
         return view('bookmarks.create', compact('categories'));
     }
 
@@ -53,8 +53,15 @@ class BookmarkController extends Controller
      */
     public function store(Request $request)
     {
-        $bookmark = new Bookmark();
-        $bookmark->create($request->all());
+//        $bookmark = new Bookmark();
+    //        $bookmark->create($request->all());
+        $bookmarks = Auth::user()->bookmarks()->create($request->all());
+
+
+
+
+
+
         
         return $this->showBookmarks();
     }

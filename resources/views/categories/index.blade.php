@@ -26,11 +26,21 @@
                                         <button type="submit" class="btn btn-warning">{{"Delete"}}</button>
                                     </form>
                                 </div>
+
+
                             </div>
 
 
                             <hr>
                         @endforeach
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="/bookmarks/create" class="btn btn-danger">
+                                    Create a Bookmark
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
