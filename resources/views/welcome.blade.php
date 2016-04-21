@@ -15,8 +15,11 @@
 
                         <div class="alert alert-warning">
                             {{ session('flash_message')}}
-
                         </div>
+
+                            @foreach($groups as $group)
+                                <p>{{$group->name}}</p>
+                            @endforeach
                     @elseif(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}

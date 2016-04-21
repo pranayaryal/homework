@@ -55,9 +55,8 @@ class User extends Authenticatable
      */
     public function hasGroupAssigned()
     {
-        $user_row = UserGroups::where('user_id', Auth::user()->id)->first();
-
-        return !!$user_row;
+        return UserGroups::where('user_id', Auth::user()->id)->exists();
+       
     }
 
 

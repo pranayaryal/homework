@@ -42,7 +42,12 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+        
         $group = new Group();
+       
         $group->create($request->all());
 
         return $this->showGroups();
@@ -73,6 +78,10 @@ class GroupsController extends Controller
      */
     public function update(Group $group, Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
         $group->update($request->all());
         
         return $this->showGroups();

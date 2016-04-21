@@ -8,6 +8,7 @@
                     <div class="panel-heading">Groups</div>
 
                     <div class="panel-body">
+
                         <p>There are {{count($groups)}} groups</p>
                         @foreach($groups as $group)
 

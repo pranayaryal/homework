@@ -23,7 +23,7 @@ class UserController extends Controller
     {
         $users = User::all();
         
-        $group_name = Auth::user()->getGroupName();
+//        $group_name = Auth::user()->getGroupName();
 
         return view('users.index', compact('users'));
     }
@@ -59,6 +59,11 @@ class UserController extends Controller
      */
     public function update(User $user, Request $request)
     {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+        ]);
         
         $user->update($request->all());
 
@@ -100,13 +105,13 @@ class UserController extends Controller
      */
     public function storeUserGroup(Request $request)
     {
-       
+
         $group_name = Auth::user()->getGroupNameFromId($request['group']);
 
         if (Auth::user()->hasGroupAssigned())
         {
-
-            return redirect('/')->with('flash_message','You already have a group assigned which is: ' . $group_name);
+            return redirect('/')
+                ->with('flash_message','You already have a group assigned which is: ' . $group_name);
         }
 
         UserGroups::create(['group_id' => $request['group'],

@@ -26,7 +26,11 @@ class ExampleTest extends TestCase
         $this->visit('/login')
             ->type('email@email.com', 'email')
             ->type('xxxxxx', 'password')
-            ->click('Login')
-            ->see('Users', 'li');
+            ->press('Login')
+            ->see('Select a Group');
+//            ->seePageIs('/group/add');
+
+
+
     }
 }

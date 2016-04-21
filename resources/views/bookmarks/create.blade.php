@@ -9,6 +9,7 @@
 
 
                         <div class="panel-body">
+
                             @if(count($categories)==0)
                                 <div class="col-md-6">
                                     <p>Oops! before you create a bookmark you must have a category</p>

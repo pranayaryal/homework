@@ -60,8 +60,16 @@ class BookmarkController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $this->checkCategoryId($request);
 
+        $this->validate($request, [
+            'name' => 'required | unique:bookmarks',
+            'url' => 'required',
+            'description' => 'required',
+            'category_id' => 'required'
+        ]);
 
         Auth::user()->bookmarks()->create($request->all());
 
