@@ -64,9 +64,5 @@ Route::post('/group/add', 'UserController@storeUserGroup');
 //Searching twitter
 Route::get('/search/{query}', function ($query)
 {
-
-    return Twitter::search($query);
-
-
-
+    return Twitter::search($query);//Twitter facade
 });

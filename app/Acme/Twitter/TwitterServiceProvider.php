@@ -25,7 +25,6 @@ class TwitterServiceProvider extends ServiceProvider{
         $this->app->bind('twitter', function ()
         {
 
-
             $middleware = new Oauth1([
                 'consumer_key' => Config::get('twitter.consumer_key'),
                 'consumer_secret' => Config::get('twitter.consumer_secret'),

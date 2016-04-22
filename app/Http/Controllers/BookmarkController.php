@@ -61,7 +61,6 @@ class BookmarkController extends Controller
     public function store(Request $request)
     {
 
-
         $this->checkCategoryId($request);
 
         $this->validate($request, [
