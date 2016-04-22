@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::auth();
 
@@ -60,3 +60,13 @@ Route::post('category', 'CategoryController@store');
 Route::get('/group/add', 'UserController@addGroupForm');
 Route::post('/group/add', 'UserController@storeUserGroup');
 
+
+//Searching twitter
+Route::get('/search/{query}', function ($query)
+{
+
+    return Twitter::search($query);
+
+
+
+});
